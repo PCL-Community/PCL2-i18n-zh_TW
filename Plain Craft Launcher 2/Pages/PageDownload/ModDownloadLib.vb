@@ -32,7 +32,7 @@ Public Module ModDownloadLib
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = "Minecraft " & Id & " 下载" Then
                         If Behaviour = NetPreDownloadBehaviour.ExitWhileExistsOrDownloading Then Return LoaderTaskbar(i)
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Return LoaderTaskbar(i)
                     End If
                 Next
@@ -41,7 +41,7 @@ Public Module ModDownloadLib
             '已有版本检查
             If Behaviour <> NetPreDownloadBehaviour.IgnoreCheck AndAlso File.Exists(VersionFolder & Id & ".json") AndAlso File.Exists(VersionFolder & Id & ".jar") Then
                 If Behaviour = NetPreDownloadBehaviour.ExitWhileExistsOrDownloading Then Return Nothing
-                If MyMsgBox("版本 " & Id & " 已存在，是否重新下载？" & vbCrLf & "这会覆盖版本的 json 与 jar 文件，但不会影响版本隔离的文件。", "版本已存在", "继续", "取消") = 1 Then
+                If MyMsgBox("版本 " & Id & " 已存在，是否重新下載？" & vbCrLf & "這會覆蓋版本的 json 與 jar 文件，但不會影響版本隔離的文件。", "版本已存在", "繼續", "取消") = 1 Then
                     File.Delete(VersionFolder & Id & ".jar")
                     File.Delete(VersionFolder & Id & ".json")
                 Else
@@ -78,7 +78,7 @@ Public Module ModDownloadLib
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = "Minecraft " & Id & " 下载" Then
                         If Behaviour = NetPreDownloadBehaviour.ExitWhileExistsOrDownloading Then Exit Sub
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Exit Sub
                     End If
                 Next
@@ -196,7 +196,7 @@ Public Module ModDownloadLib
         Else
             NewItem.Info = Entry("lore").ToString
         End If
-        If Entry("url").ToString.Contains("pcl") Then NewItem.Info = "[PCL 特供下载] " & NewItem.Info
+        If Entry("url").ToString.Contains("pcl") Then NewItem.Info = "[PCL 特供下載] " & NewItem.Info
         AddHandler NewItem.Click, OnClick
         '建立菜单
         If IsSaveOnly Then
@@ -329,7 +329,7 @@ Public Module ModDownloadLib
             SyncLock LoaderTaskbarLock
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = "OptiFine " & DownloadInfo.NameDisplay & " 下载" Then
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Exit Sub
                     End If
                 Next
@@ -337,7 +337,7 @@ Public Module ModDownloadLib
 
             '已有版本检查
             If File.Exists(VersionFolder & Id & ".json") Then
-                If MyMsgBox("版本 " & Id & " 已存在，是否重新下载？" & vbCrLf & "这会覆盖版本的 json 和 jar 文件，但不会影响版本隔离的文件。", "版本已存在", "继续", "取消") = 1 Then
+                If MyMsgBox("版本" & Id & " 已存在，是否重新下載？" & vbCrLf & "這會覆寫版本的json 和jar 文件，但不會影響版本隔離的文件。", "版本已存在", "繼續", "取消") = 1 Then
                     File.Delete(VersionFolder & Id & ".jar")
                     File.Delete(VersionFolder & Id & ".json")
                 Else
@@ -359,14 +359,14 @@ Public Module ModDownloadLib
     Private Sub McDownloadOptiFineSave(DownloadInfo As DlOptiFineListEntry)
         Try
             Dim Id As String = DownloadInfo.NameVersion
-            Dim Target As String = SelectAs("选择保存位置", DownloadInfo.NameFile, "OptiFine Jar (*.jar)|*.jar")
+            Dim Target As String = SelectAs("選擇保存位置", DownloadInfo.NameFile, "OptiFine Jar (*.jar)|*.jar")
             If Not Target.Contains("\") Then Exit Sub
 
             '重复任务检查
             SyncLock LoaderTaskbarLock
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = "OptiFine " & DownloadInfo.NameDisplay & " 下载" Then
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Exit Sub
                     End If
                 Next
@@ -796,7 +796,7 @@ Retry:
             SyncLock LoaderTaskbarLock
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = "LiteLoader " & Id & " 下载" Then
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Exit Sub
                     End If
                 Next
@@ -826,14 +826,14 @@ Retry:
     Private Sub McDownloadLiteLoaderSave(DownloadInfo As DlLiteLoaderListEntry)
         Try
             Dim Id As String = DownloadInfo.Inherit
-            Dim Target As String = SelectAs("选择保存位置", DownloadInfo.FileName.Replace("-SNAPSHOT", ""), "LiteLoader 安装器 (*.jar)|*.jar")
+            Dim Target As String = SelectAs("選擇保存位置", DownloadInfo.FileName.Replace("-SNAPSHOT", ""), "LiteLoader 安裝器 (*.jar)|*.jar")
             If Not Target.Contains("\") Then Exit Sub
 
             '重复任务检查
             SyncLock LoaderTaskbarLock
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = "LiteLoader " & Id & " 下载" Then
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Exit Sub
                     End If
                 Next
@@ -1036,7 +1036,7 @@ Retry:
             SyncLock LoaderTaskbarLock
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = DisplayName & " 下载" Then
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Exit Sub
                     End If
                 Next
@@ -1044,7 +1044,7 @@ Retry:
 
             '已有版本检查
             If File.Exists(VersionFolder & Id & ".json") Then
-                If MyMsgBox("版本 " & Id & " 已存在，是否重新下载？" & vbCrLf & "这会覆盖版本的 json 和 jar 文件，但不会影响版本隔离的文件。", "版本已存在", "继续", "取消") = 1 Then
+                If MyMsgBox("版本" & Id & " 已存在，是否重新下載？" & vbCrLf & "這會覆寫版本的json 和jar 文件，但不會影響版本隔離的文件。", "版本已存在", "繼續", "取消") = 1 Then
                     File.Delete(VersionFolder & Id & ".jar")
                     File.Delete(VersionFolder & Id & ".json")
                 Else
@@ -1071,7 +1071,7 @@ Retry:
     End Sub
     Public Sub McDownloadForgeSave(DownloadInfo As DlForgeVersionEntry)
         Try
-            Dim Target As String = SelectAs("选择保存位置", DownloadInfo.FileName, "Forge 文件 (*." & DownloadInfo.FileSuffix & ")|*." & DownloadInfo.FileSuffix)
+            Dim Target As String = SelectAs("選擇保存位置", DownloadInfo.FileName, "Forge 文件 (*." & DownloadInfo.FileSuffix & ")|*." & DownloadInfo.FileSuffix)
             Dim DisplayName As String = "Forge " & DownloadInfo.Inherit & " - " & DownloadInfo.Version
             If Not Target.Contains("\") Then Exit Sub
 
@@ -1079,7 +1079,7 @@ Retry:
             SyncLock LoaderTaskbarLock
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = DisplayName & " 下载" Then
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Exit Sub
                     End If
                 Next
@@ -1703,14 +1703,14 @@ Retry:
             Dim Url As String = DownloadInfo("url").ToString
             Dim FileName As String = GetFileNameFromPath(Url)
             Dim Version As String = GetFileNameFromPath(DownloadInfo("version").ToString)
-            Dim Target As String = SelectAs("选择保存位置", FileName, "Fabric 安装器 (*.jar)|*.jar")
+            Dim Target As String = SelectAs("選擇保存位置", FileName, "Fabric 安裝器 (*.jar)|*.jar")
             If Not Target.Contains("\") Then Exit Sub
 
             '重复任务检查
             SyncLock LoaderTaskbarLock
                 For i = 0 To LoaderTaskbar.Count - 1
                     If LoaderTaskbar(i).Name = "Fabric " & Version & " 安装器下载" Then
-                        Hint("该版本正在下载中！", HintType.Critical)
+                        Hint("該版本正在下載中！", HintType.Critical)
                         Exit Sub
                     End If
                 Next
